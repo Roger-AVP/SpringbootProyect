@@ -3,6 +3,7 @@ Eureka server \
 Cloud Config server \
 
 ## Base de de datos Postgres 
+Agregar las respectivas credenciales en el archivo `config-data/todos-service.properties`
 
 ## Pruebas Unitarias
 Junit \
