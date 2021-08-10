@@ -11,15 +11,14 @@ import com.todosservice.entity.User;
 @SpringBootTest
 public class UserRepositoryTest {
 
-	@Autowired
-	private UserRepository userRepository;
-
-	@Test
-	public void testSaveUser() {
-		User user = new User(null, "roger", "alex@gmail.com", "12345", null);
-		User userTodo = userRepository.save(user);
-
-		assertNotNull(userTodo);
-	}
+	/*
+	 * @Autowired private UserRepository userRepository;
+	 * 
+	 * @Test public void testSaveUser() { User user = new User(null, "roger3",
+	 * "roger3@gmail.com", "12345", null); User userTodo =
+	 * userRepository.save(user);
+	 * 
+	 * assertNotNull(userTodo); }
+	 */
 
 }
