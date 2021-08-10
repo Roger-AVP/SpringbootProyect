@@ -22,8 +22,8 @@ public class LoginRestController {
 	// @RequestParam("password") String password)
 
 	@RequestMapping(method = RequestMethod.POST)
-	public UserDto login(@RequestBody UserDto user) throws TodoException {
-		UserDto newUserDto = new UserDto();
+	public User login(@RequestBody User user) throws TodoException {
+		User newUserDto = new User();
 
 		User loggedUser = userService.login(user.getEmail(), user.getPassword());
 		newUserDto.setToken(loggedUser.getToken());
