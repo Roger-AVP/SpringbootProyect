@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.todosservice.dto.UserDto;
 import com.todosservice.entity.User;
 import com.todosservice.exceptions.TodoException;
 import com.todosservice.service.UserService;
@@ -29,16 +30,16 @@ public class LoginRestController {
 	// @RequestParam("password") String password)
 
 	@RequestMapping(method = RequestMethod.POST)
-	public User login(@RequestBody User user) throws TodoException {
-		User newUser = new User();
+	public UserDto login(@RequestBody UserDto user) throws TodoException {
+		UserDto newUserDto = new UserDto();
 
 		User loggedUser = userService.login(user.getEmail(), user.getPassword());
-		newUser.setToken(loggedUser.getToken());
-		newUser.setUserId(loggedUser.getUserId());
-		newUser.setName(loggedUser.getName());
-		newUser.setEmail(loggedUser.getEmail());
+		newUserDto.setToken(loggedUser.getToken());
+		newUserDto.setUserId(loggedUser.getUserId());
+		newUserDto.setName(loggedUser.getName());
+		newUserDto.setEmail(loggedUser.getEmail());
 
-		return newUser;
+		return newUserDto;
 	}
 
 }
