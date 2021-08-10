@@ -15,7 +15,6 @@ import com.todosservice.entity.Todo;
 import com.todosservice.exceptions.TodoException;
 import com.todosservice.service.impl.TodoServiceImpl;
 
-
 @RestController
 @RequestMapping("/api/todos")
 public class TodoRestController {
@@ -23,45 +22,59 @@ public class TodoRestController {
 	@Autowired
 	private TodoServiceImpl todoServiceImpl;
 
-	// GET METHODS
+	/* GET METHODS */
 
+	// Obtiene lista de todos los registro de tipo clase 'Todo'
 	@RequestMapping(method = RequestMethod.GET, value = "/getAll")
 	public List<Todo> getAll() {
 		return todoServiceImpl.getAll();
 	}
 
+	// Obtiene un solo registro clase 'Todo', filtrado por el campo todoId
 	@RequestMapping(method = RequestMethod.GET, value = "/getById")
 	public Todo getById(@RequestParam(name = "todoId", required = true) Long todoId) {
 		return todoServiceImpl.getById(todoId);
 	}
-	
+
+	// Obtiene una lista de tipo clase 'Todo', filtrados por su campo 'completed'
 	@RequestMapping(method = RequestMethod.GET, value = "/getByCompleted")
 	public List<Todo> getByCompleted(@RequestParam(name = "completed", required = true) boolean completed) {
 		return todoServiceImpl.getByCompleted(completed);
 	}
 
-	// POST METHODS
+	/* POST METHODS */
+
+	// Registra un nuevo elemento de tipo clase 'Todo'
 	@RequestMapping(method = RequestMethod.POST, value = "/create")
-	public Todo guardar(@RequestBody @Valid Todo todo) throws TodoException{
+	public Todo guardar(@RequestBody @Valid Todo todo) throws TodoException {
 		return todoServiceImpl.create(todo);
 	}
 
-	// DELETE METHODS
-	@RequestMapping(method = RequestMethod.DELETE, value = "/delete")
-	public void delete(@RequestParam(name = "todoId", required = true) Long todoId) {
-		todoServiceImpl.delete(todoId);
-	}
+	/* PUT METHODS */
 
-	// PUT METHODS
+	// Actualiza un registro de tipo clase 'Todo'
 	@RequestMapping(method = RequestMethod.PUT, value = "/update")
 	public Todo update(@RequestBody @Valid Todo todo) {
 		return todoServiceImpl.update(todo);
 	}
 
-
-	@RequestMapping(method = RequestMethod.PUT, value = "/updateToggleAll")
+	// Actualiza varios registros de tipo clase 'Todo', mediante una lista
+	@RequestMapping(method = RequestMethod.PUT, value = "/updatePerList")
 	public List<Todo> updateByCompleted(@RequestBody @Valid List<Todo> todoList) {
 		return todoServiceImpl.updateToggleAll(todoList);
+	}
+
+	// Elimina varios registros de tipo clase 'Todo'
+	@RequestMapping(method = RequestMethod.PUT, value = "/deletePerList")
+	public void deletePerList(@RequestBody List<Todo> todoList) {
+		todoServiceImpl.deletePerList(todoList);
+	}
+	/* DELETE METHODS */
+
+	// Elimina un registro de tipo clase 'Todo'
+	@RequestMapping(method = RequestMethod.DELETE, value = "/delete")
+	public void delete(@RequestParam(name = "todoId", required = true) Long todoId) {
+		todoServiceImpl.delete(todoId);
 	}
 
 }

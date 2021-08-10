@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
@@ -26,6 +27,7 @@ public class Todo {
 	private Long todoId;
 
 	@NotEmpty(message = "El campo no debe ser vacío")
+	@Size(min = 1, max = 20)
 	@Column(name = "title", nullable = false, length = 20)
 	private String title;
 

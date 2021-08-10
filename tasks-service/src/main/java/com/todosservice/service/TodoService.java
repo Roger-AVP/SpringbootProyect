@@ -21,5 +21,7 @@ public interface TodoService {
 	Todo update(Todo task);
 
 	void delete(Long taskId);
+	
+	void deletePerList(List <Todo> todos);
 
 }

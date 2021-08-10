@@ -13,7 +13,6 @@ import com.todosservice.specification.TodoSpecification;
 
 import lombok.RequiredArgsConstructor;
 
-
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -55,6 +54,11 @@ public class TodoServiceImpl implements TodoService {
 	@Override
 	public List<Todo> updateToggleAll(List<Todo> todoList) {
 		return todoRepository.saveAll(todoList);
+	}
+
+	@Override
+	public void deletePerList(List<Todo> todos) {
+		todoRepository.deleteAll(todos);
 	}
 
 }

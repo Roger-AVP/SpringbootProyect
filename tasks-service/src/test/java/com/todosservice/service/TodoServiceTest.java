@@ -47,7 +47,7 @@ public class TodoServiceTest {
 	}
 
 	@Test
- 	public void testCreateTodoService() throws TodoException {
+	public void testCreateTodoService() throws TodoException {
 
 		Todo todo = new Todo(1L, "primera tarea", false);
 
@@ -55,7 +55,7 @@ public class TodoServiceTest {
 
 		Assertions.assertThat(savedTodo.getTodoId().equals(todo.getTodoId()));
 	}
-	
+
 	@Test
 	public void testUpdateTodoService() throws TodoException {
 
@@ -63,7 +63,7 @@ public class TodoServiceTest {
 
 		Todo savedTodo = todoService.create(todo);
 		savedTodo.setCompleted(true);
-		
+
 		Todo updatedTodo = todoService.update(savedTodo);
 
 		assertFalse(todo.isCompleted());
