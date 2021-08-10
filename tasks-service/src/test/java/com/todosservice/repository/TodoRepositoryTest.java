@@ -33,57 +33,47 @@ public class TodoRepositoryTest {
 		assertNotNull(savedTodo);
 	}
 
-	@Test
-	public void testSaveAllTodos() {
-		Todo todo2 = new Todo(null, "Tarea 2", false);
-		Todo todo3 = new Todo(null, "Tarea 3", false);
-		Todo todo4 = new Todo(null, "Tarea 4", false);
-
-		List<Todo> todos = new ArrayList<Todo>();
-		todos.add(todo2);
-		todos.add(todo3);
-		todos.add(todo4);
-
-		List<Todo> savedTodos = todoRepository.saveAll(todos);
-
-		assertEquals(3, savedTodos.size());
-	}
-
-	@Test
-	@Rollback(false)
-	public void testUpdateTodo() {
-		Todo todo = new Todo(null, "Tarea de prueba", false);
-		Todo savedTodo = todoRepository.save(todo);
-
-		// Cambiamos de nombre al registro
-		String newTitle = "Tarea nueva";
-		savedTodo.setTitle(newTitle);
-		savedTodo = todoRepository.save(savedTodo);
-
-		assertEquals(newTitle, savedTodo.getTitle());
-	}
-
-	@Test
-	public void testGetListTodos() {
-		List<Todo> todos = todoRepository.findAll();
-
-		assertThat(todos).size().isGreaterThan(0);
-	}
-
-	@Test
-	@Rollback(false)
-	public void testDeleteTodo() {
-		Todo todo = new Todo(null, "deleteTodo", false);
-		Todo savedTodo = todoRepository.save(todo);
-
-		boolean isExistTodo = todoRepository.findById(savedTodo.getTodoId()).isPresent();
-
-		todoRepository.deleteById(savedTodo.getTodoId());
-
-		boolean notExistTodo = todoRepository.findById(savedTodo.getTodoId()).isPresent();
-
-		assertTrue(isExistTodo);
-		assertFalse(notExistTodo);
-	}
+	/*
+	 * @Test public void testSaveAllTodos() { Todo todo2 = new Todo(null, "Tarea 2",
+	 * false); Todo todo3 = new Todo(null, "Tarea 3", false); Todo todo4 = new
+	 * Todo(null, "Tarea 4", false);
+	 * 
+	 * List<Todo> todos = new ArrayList<Todo>(); todos.add(todo2); todos.add(todo3);
+	 * todos.add(todo4);
+	 * 
+	 * List<Todo> savedTodos = todoRepository.saveAll(todos);
+	 * 
+	 * assertEquals(3, savedTodos.size()); }
+	 * 
+	 * @Test
+	 * 
+	 * @Rollback(false) public void testUpdateTodo() { Todo todo = new Todo(null,
+	 * "Tarea de prueba", false); Todo savedTodo = todoRepository.save(todo);
+	 * 
+	 * // Cambiamos de nombre al registro String newTitle = "Tarea nueva";
+	 * savedTodo.setTitle(newTitle); savedTodo = todoRepository.save(savedTodo);
+	 * 
+	 * assertEquals(newTitle, savedTodo.getTitle()); }
+	 * 
+	 * @Test public void testGetListTodos() { List<Todo> todos =
+	 * todoRepository.findAll();
+	 * 
+	 * assertThat(todos).size().isGreaterThan(0); }
+	 * 
+	 * @Test
+	 * 
+	 * @Rollback(false) public void testDeleteTodo() { Todo todo = new Todo(null,
+	 * "deleteTodo", false); Todo savedTodo = todoRepository.save(todo);
+	 * 
+	 * boolean isExistTodo =
+	 * todoRepository.findById(savedTodo.getTodoId()).isPresent();
+	 * 
+	 * todoRepository.deleteById(savedTodo.getTodoId());
+	 * 
+	 * boolean notExistTodo =
+	 * todoRepository.findById(savedTodo.getTodoId()).isPresent();
+	 * 
+	 * assertTrue(isExistTodo); assertFalse(notExistTodo); }
+	 */
 
 }
