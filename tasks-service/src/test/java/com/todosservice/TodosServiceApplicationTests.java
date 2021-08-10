@@ -8,6 +8,7 @@ class TodosServiceApplicationTests {
 
 	@Test
 	void contextLoads() {
+		System.out.println("");
 	}
 
 }

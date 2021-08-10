@@ -18,12 +18,10 @@ public class LoginRestController {
 	@Autowired
 	UserService userService;
 
-	// public User login(@RequestParam("email") String email,
-	// @RequestParam("password") String password)
 
 	@RequestMapping(method = RequestMethod.POST)
-	public User login(@RequestBody User user) throws TodoException {
-		User newUserDto = new User();
+	public UserDto login(@RequestBody UserDto user) throws TodoException {
+		UserDto newUserDto = new UserDto();
 
 		User loggedUser = userService.login(user.getEmail(), user.getPassword());
 		newUserDto.setToken(loggedUser.getToken());

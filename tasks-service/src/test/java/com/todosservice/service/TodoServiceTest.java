@@ -95,5 +95,4 @@ public class TodoServiceTest {
 		// Evalua el valor del campo 'completed' luego de actualizar el registro
 		assertTrue(updatedTodo.isCompleted());
 	}
-
 }

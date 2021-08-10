@@ -56,7 +56,7 @@ public class TodoRepositoryTest {
 		// Cambia de nombre al registro String newTitle = "Tarea nueva";
 		String newTitle = "Tarea nueva";
 		savedTodo.setTitle(newTitle);
-		
+
 		savedTodo = todoRepository.save(savedTodo);
 
 		assertEquals(newTitle, savedTodo.getTitle());
@@ -83,7 +83,6 @@ public class TodoRepositoryTest {
 		assertTrue(isExistTodo);
 		assertFalse(notExistTodo);
 	}
-	
 
 	@Test
 	public void testDeletePerListTodo() {
@@ -97,22 +96,22 @@ public class TodoRepositoryTest {
 		todos.add(todo2);
 		todos.add(todo3);
 		todos.add(todo4);
-		
+
 		// Registra una lista de registro tipo 'Todo'
 		List<Todo> savedTodos = todoRepository.saveAll(todos);
 
 		// Evalúa si se registraron la cantidad de objetos ingresado en la lista
 		assertEquals(3, savedTodos.size());
-		
+
 		// Elimina los datos que fueron registrados de tipo 'Todo'
 		todoRepository.deleteAll(savedTodos);
-		
+
 		// Crea una lista de ids tipo Long
 		List<Long> ids = new ArrayList<Long>();
 		ids.add(10L);
 		ids.add(11L);
 		ids.add(12L);
-		
+
 		// Retorna una lista de registros consultando mediante la lista de ids
 		List<Todo> todosFetched = todoRepository.findAllById(ids);
 
